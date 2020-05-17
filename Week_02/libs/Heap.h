@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<assert.h>
+#include<vector>
 
 
 class MinHeap {
@@ -45,7 +46,7 @@ public:
 	void intsert(int val);
 	void show();
 	int extractMin();
-	
+
 
 };
 
@@ -76,7 +77,7 @@ bool MinHeap::empty() {
 
 void MinHeap::heapifyUp(int k) {
 	int const tmp = data[k];
-	while (k>=1 && data[parent(k)]>tmp) {
+	while (k >= 1 && data[parent(k)] > tmp) {
 		data[k] = data[parent(k)];
 		k = parent(k);
 	}
@@ -85,10 +86,10 @@ void MinHeap::heapifyUp(int k) {
 
 void MinHeap::heapifyDown(int k) {
 	int const tmp = data[k];
-	while (leftChild(k)<count)
+	while (leftChild(k) < count)
 	{
 		int j = leftChild(k);
-		if (j + 1 < count&&data[j] > data[j + 1])
+		if (j + 1 < count && data[j] > data[j + 1])
 			++j;
 
 		if (tmp > data[j]) {
@@ -116,7 +117,7 @@ void MinHeap::show() {
 
 int MinHeap::extractMin() {
 	int ret = data[0];
-	data[0] = data[count-1];
+	data[0] = data[count - 1];
 	--count;
 	heapifyDown(0);
 	return ret;
